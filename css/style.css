@@ -1,0 +1,401 @@
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333; 
+    margin: 0; 
+    padding: 20px; 
+    min-height: 100vh;
+}
+
+h1, h2 { 
+    color: #fff; 
+    text-align: center; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h1 { 
+    font-size: 2.5em; 
+    margin-bottom: 30px;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: auto; 
+    background: rgba(255,255,255,0.95); 
+    padding: 30px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    margin-bottom: 30px;
+}
+
+.section { 
+    border: 2px solid #e9ecef; 
+    padding: 20px; 
+    border-radius: 10px; 
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.section h2 {
+    color: #0056b3;
+    text-shadow: none;
+    margin-top: 0;
+}
+
+/* Estilos dos Desafios */
+#desafios-lista .desafio { 
+    border-bottom: 2px solid #eee; 
+    padding: 15px 0; 
+    position: relative;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease;
+}
+
+#desafios-lista .desafio:last-child { border-bottom: none; }
+
+#desafios-lista .desafio:hover {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 0 -15px;
+}
+
+.desafio button {
+    padding: 8px 16px;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    float: right;
+    margin-top: -5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+.desafio button:hover { 
+    background: linear-gradient(45deg, #218838, #1ea085);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    animation: pulse 0.3s ease;
+}
+
+.desafio .acoes { 
+    float: right; 
+    margin-left: 15px; 
+    margin-top: 2px;
+}
+
+.desafio .acoes i { 
+    cursor: pointer; 
+    margin-left: 10px; 
+    font-size: 16px; 
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.fa-pencil-alt { 
+    color: #ffc107; 
+}
+
+.fa-pencil-alt:hover {
+    background-color: #ffc107;
+    color: white;
+}
+
+.fa-trash-alt { 
+    color: #dc3545; 
+}
+
+.fa-trash-alt:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estilos do Ranking */
+#ranking-tabela { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 15px;
+}
+
+#ranking-tabela th, #ranking-tabela td { 
+    padding: 12px; 
+    text-align: left; 
+    border-bottom: 1px solid #ddd; 
+}
+
+#ranking-tabela th { 
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    color: white;
+    font-weight: bold;
+}
+
+#ranking-tabela tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#ranking-tabela tr:hover {
+    background-color: #e9ecef;
+}
+
+.filters { 
+    margin-bottom: 15px; 
+    text-align: center; 
+}
+
+.filters button { 
+    padding: 10px 20px; 
+    border: 2px solid #0056b3; 
+    background: #fff; 
+    color: #0056b3; 
+    cursor: pointer; 
+    border-radius: 25px; 
+    margin: 0 8px; 
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.filters button.active, .filters button:hover { 
+    background: linear-gradient(45deg, #0056b3, #007bff); 
+    color: #fff; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+}
+
+/* Estilos do Formulário */
+#gerenciamento-section { 
+    margin-top: 30px; 
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.form-grid { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 15px; 
+    margin-bottom: 15px; 
+}
+
+#desafio-form input, #desafio-form textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 2px solid #ddd; 
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+#desafio-form input:focus, #desafio-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+#desafio-form textarea { 
+    margin-bottom: 15px; 
+    resize: vertical; 
+    font-family: inherit;
+}
+
+.form-buttons { 
+    text-align: right; 
+}
+
+.form-buttons button {
+    padding: 12px 25px; 
+    border-radius: 25px; 
+    border: none; 
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+#btn-salvar { 
+    background: linear-gradient(45deg, #007bff, #0056b3); 
+    color: white; 
+    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+}
+
+#btn-salvar:hover { 
+    background: linear-gradient(45deg, #0069d9, #004085); 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+#btn-cancelar { 
+    background: linear-gradient(45deg, #6c757d, #5a6268); 
+    color: white; 
+}
+
+#btn-cancelar:hover {
+    background: linear-gradient(45deg, #5a6268, #495057);
+    transform: translateY(-2px);
+}
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff, #f8f9fa); 
+    margin: 10% auto; 
+    padding: 30px;
+    border: none; 
+    width: 80%; 
+    max-width: 500px;
+    border-radius: 15px; 
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h3 { 
+    color: #0056b3; 
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.modal-content .badge-conquistado {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 15px; 
+    padding: 15px; 
+    background: linear-gradient(45deg, #e9ecef, #f8f9fa); 
+    border-radius: 10px;
+    border: 2px solid #28a745;
+}
+
+.modal-content .badge-conquistado img { 
+    width: 50px; 
+    margin-right: 15px; 
+}
+
+.close-button {
+    color: #aaa; 
+    float: right; 
+    font-size: 28px; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animação de conclusão */
+.desafio-concluido {
+    animation: concluidoAnimation 0.8s ease;
+    background: linear-gradient(45deg, #d4edda, #c3e6cb) !important;
+    border: 2px solid #28a745 !important;
+    border-radius: 8px;
+    padding: 15px !important;
+    margin: 0 -15px;
+}
+
+@keyframes concluidoAnimation {
+    0% { 
+        transform: scale(1);
+        background: #fff;
+    }
+    50% { 
+        transform: scale(1.02);
+        background: linear-gradient(45deg, #d4edda, #c3e6cb);
+    }
+    100% { 
+        transform: scale(1);
+        background: linear-gradient(45deg, #d4edda, #c3e6cb);
+    }
+}
+
+.concluido-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    animation: badgeAppear 0.5s ease;
+}
+
+@keyframes badgeAppear {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+}

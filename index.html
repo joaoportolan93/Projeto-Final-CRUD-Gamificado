@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio de Aprendizado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>🎯 Desafio de Aprendizado</h1>
+    
+    <div class="container">
+        
+        <div class="grid">
+            <!-- Seção de Desafios -->
+            <div class="section">
+                <h2>📚 Desafios Disponíveis</h2>
+                <div id="desafios-lista">
+                    <p>Carregando desafios...</p>
+                </div>
+            </div>
+
+            <!-- Seção de Ranking -->
+            <div class="section">
+                <h2>🏆 Ranking</h2>
+                
+                <!-- Sistema de Busca -->
+                <div class="search-section" style="margin-bottom: 15px;">
+                    <input type="text" id="search-user" placeholder="🔍 Buscar usuário..." style="width: 100%; padding: 8px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 10px;">
+                </div>
+                
+                <!-- Filtros Avançados -->
+                <div class="advanced-filters" style="margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 8px;">
+                    <h4 style="margin: 0 0 10px 0; color: #0056b3;">Filtros Avançados:</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label>Pontos mínimos:</label>
+                            <input type="number" id="min-points" placeholder="0" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label>Streak mínimo:</label>
+                            <input type="number" id="min-streak" placeholder="0" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+                    <button onclick="aplicarFiltros()" style="margin-top: 10px; padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">Aplicar Filtros</button>
+                    <button onclick="limparFiltros()" style="margin-top: 10px; margin-left: 10px; padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Limpar</button>
+                </div>
+                
+                <div class="filters">
+                    <span>Ordenar por:</span>
+                    <button id="btn-ord-pontos" class="active" onclick="carregarTudo('pontos_totais')">Pontos</button>
+                    <button id="btn-ord-streak" onclick="carregarTudo('streak_atual')">Streak</button>
+                </div>
+                <table id="ranking-tabela">
+                    <thead>
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Nome</th>
+                            <th>Pontos</th>
+                            <th>Streak 🔥</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body">
+                        <tr><td colspan="5">Carregando ranking...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Seção de Gerenciamento -->
+        <div class="section" id="gerenciamento-section">
+            <h2>⚙️ Gerenciar Desafios</h2>
+            <form id="desafio-form">
+                <input type="hidden" id="desafio-id">
+                <div class="form-grid">
+                    <input type="text" id="titulo" placeholder="Título do Desafio" required>
+                    <input type="text" id="area_conhecimento" placeholder="Área de Conhecimento" required>
+                    <input type="number" id="pontos" placeholder="Pontos" required min="1">
+                </div>
+                <textarea id="descricao" placeholder="Descrição do Desafio" rows="3" required></textarea>
+                <div class="form-buttons">
+                    <button type="submit" id="btn-salvar">💾 Salvar Desafio</button>
+                    <button type="button" id="btn-cancelar" onclick="cancelarEdicao()" style="display:none;">❌ Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Feedback -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="fecharModal()">&times;</span>
+            <h3>🎉 Parabéns!</h3>
+            <p id="feedback-texto"></p>
+            <div id="feedback-badges"></div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
+
