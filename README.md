@@ -165,7 +165,6 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE`.
 ## 👥 Créditos
 
 Desenvolvido pela equipe.
-
 ---
 
 🎯 Bons estudos e que a gamificação torne seu aprendizado mais divertido!
