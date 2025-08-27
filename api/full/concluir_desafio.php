@@ -1,8 +1,8 @@
 <?php
-// Endpoint para Concluir um Desafio
+// Endpoint para Concluir um Desafio - Versão completa (MySQL)
 
-include_once 'config.php';
-include_once 'logica_gamificacao.php';
+include_once '../config.php';
+include_once '../logica_gamificacao.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -22,11 +22,9 @@ if (!$usuario_id || !$desafio_id) {
     exit;
 }
 
-// --- Início da Transação ---
 $pdo->beginTransaction();
 
 try {
-    // Verificar se o desafio já foi concluído hoje pelo usuário
     $stmt = $pdo->prepare("
         SELECT COUNT(*) as total 
         FROM desafios_concluidos 
@@ -39,7 +37,6 @@ try {
         throw new Exception("Você já concluiu este desafio hoje!");
     }
 
-    // 1. Buscar os pontos do desafio
     $stmt = $pdo->prepare("SELECT pontos FROM desafios WHERE id = ?");
     $stmt->execute([$desafio_id]);
     $desafio = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -49,14 +46,11 @@ try {
     }
     $pontos_ganhos = $desafio['pontos'];
 
-    // 2. Registrar que o desafio foi concluído
     $stmt = $pdo->prepare("INSERT INTO desafios_concluidos (usuario_id, desafio_id, data_conclusao) VALUES (?, ?, NOW())");
     $stmt->execute([$usuario_id, $desafio_id]);
 
-    // 3. Calcular o novo streak
     $novo_streak = calcularStreak($pdo, $usuario_id);
 
-    // 4. Atualizar os pontos, o streak e o último login do usuário
     $stmt = $pdo->prepare(
         "UPDATE usuarios SET 
             pontos_totais = pontos_totais + ?, 
@@ -66,13 +60,10 @@ try {
     );
     $stmt->execute([$pontos_ganhos, $novo_streak, $usuario_id]);
 
-    // 5. Verificar e conceder badges (após a atualização dos dados do usuário)
     $novos_badges = verificarBadges($pdo, $usuario_id);
 
-    // Se tudo deu certo, confirma a transação
     $pdo->commit();
 
-    // Resposta de sucesso
     http_response_code(200);
     echo json_encode([
         'message' => 'Desafio concluído com sucesso!',
@@ -82,10 +73,10 @@ try {
     ]);
 
 } catch (Exception $e) {
-    // Se algo deu errado, reverte a transação
     $pdo->rollBack();
     http_response_code(500);
     echo json_encode(['message' => 'Erro ao processar o desafio: ' . $e->getMessage()]);
 }
 ?>
+
 

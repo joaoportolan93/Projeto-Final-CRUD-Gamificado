@@ -1,17 +1,14 @@
-<<<<<<< HEAD
-# Projeto-Final-CRUD-Gamificado
-=======
 # 🎯 Desafio de Aprendizado - Sistema CRUD Gamificado
 
-Uma aplicação web completa que gamifica o processo de aprendizado através de desafios, pontos, streaks e badges. Desenvolvida com PHP, MySQL, HTML, CSS e JavaScript.
+Uma aplicação web que gamifica o processo de aprendizado com desafios, pontos, streaks e badges. Backend em PHP/MySQL e frontend em HTML/CSS/JS.
 
 ## ✨ Funcionalidades
 
 ### 🎮 Sistema de Gamificação
 - **Pontos**: Ganhe pontos ao concluir desafios
-- **Streaks**: Mantenha uma sequência diária de estudos
+- **Streaks**: Mantenha sequência diária de estudos
 - **Badges**: Conquiste medalhas por diferentes critérios
-- **Ranking**: Compete com outros usuários
+- **Ranking**: Competição entre usuários
 
 ### 📚 Gerenciamento de Desafios
 - **CRUD Completo**: Criar, visualizar, editar e deletar desafios
@@ -35,9 +32,20 @@ Uma aplicação web completa que gamifica o processo de aprendizado através de 
 
 - **XAMPP** ou **Laragon** (Apache + MySQL + PHP)
 - Navegador web moderno
-- Editor de texto (opcional, para modificações)
 
-## 🚀 Instalação
+## ⚡ Rodar em 2 minutos (resumo)
+
+1. Crie o banco `gamificado_aprendizado` e execute `database.sql` no phpMyAdmin.
+2. Ajuste credenciais em `api/config.php` se necessário:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'root');
+   define('DB_PASS', '');
+   define('DB_NAME', 'gamificado_aprendizado');
+   ```
+3. Acesse `http://localhost/gamificado-desafio-aprendizado/`.
+
+## 🚀 Instalação (detalhado)
 
 ### 1. Preparar o Ambiente
 1. Instale o XAMPP ou Laragon
@@ -45,83 +53,61 @@ Uma aplicação web completa que gamifica o processo de aprendizado através de 
 3. Acesse o phpMyAdmin em `http://localhost/phpmyadmin`
 
 ### 2. Configurar o Banco de Dados
-1. No phpMyAdmin, clique em "Novo" para criar um banco
-2. Nome do banco: `gamificado_aprendizado`
-3. Clique na aba "SQL" e execute o conteúdo do arquivo `database.sql`
+1. No phpMyAdmin, crie o banco `gamificado_aprendizado`
+2. Execute o conteúdo do arquivo `database.sql`
 
 ### 3. Instalar a Aplicação
 1. Extraia o projeto na pasta `htdocs` (XAMPP) ou `www` (Laragon)
-2. Caminho final: `C:/xampp/htdocs/gamificado-desafio-aprendizado/`
-3. Verifique se a estrutura de pastas está correta:
-   ```
-   gamificado-desafio-aprendizado/
-   ├── api/
-   │   ├── config.php
-   │   ├── desafios.php
-   │   ├── ranking.php
-   │   ├── concluir_desafio.php
-   │   └── logica_gamificacao.php
-   ├── icons/
-   │   ├── iniciante.png
-   │   ├── persistente.png
-   │   └── matematico.png
-   ├── index.html
-   ├── database.sql
-   └── README.md
-   ```
+2. Caminho final sugerido: `C:/xampp/htdocs/gamificado-desafio-aprendizado/`
 
-### 4. Configurar a Conexão
-1. Abra o arquivo `api/config.php`
-2. Verifique as configurações do banco:
-   ```php
-   define('DB_HOST', 'localhost');
-   define('DB_USER', 'root');
-   define('DB_PASS', '');
-   define('DB_NAME', 'gamificado_aprendizado');
-   ```
-3. Ajuste se necessário para seu ambiente
-
-### 5. Testar a Aplicação
+### 4. Testar a Aplicação
 1. Acesse `http://localhost/gamificado-desafio-aprendizado/`
 2. Você deve ver a interface com desafios e ranking
 3. Teste concluir um desafio clicando em "Concluir"
+
+## 🔌 Endpoints de API (importante)
+
+O frontend (`js/app.js`) consome por padrão os endpoints "simples":
+
+- `api/desafios_simple.php`
+- `api/ranking_simple.php`
+- `api/concluir_desafio_simple.php`
+
+Também existem versões completas:
+
+- `api/full/desafios.php`
+- `api/full/ranking.php`
+- `api/full/concluir_desafio.php`
+
+Para a demonstração, mantenha as versões "simple". Se desejar usar as versões completas, ajuste as URLs em `js/app.js`.
 
 ## 🎯 Como Usar
 
 ### Concluir Desafios
 1. Na seção "Desafios Disponíveis", clique em "✅ Concluir"
-2. Um modal aparecerá mostrando os pontos ganhos e novo streak
+2. Um modal mostrará pontos ganhos e novo streak
 3. Se conquistar um badge, ele será exibido no modal
 4. O ranking será atualizado automaticamente
 
 ### Gerenciar Desafios
 1. Role até a seção "⚙️ Gerenciar Desafios"
-2. Preencha o formulário com:
-   - **Título**: Nome do desafio
-   - **Área de Conhecimento**: Categoria (ex: Matemática, Programação)
-   - **Pontos**: Valor em pontos (1-100)
-   - **Descrição**: Detalhes do desafio
+2. Preencha o formulário (Título, Área, Pontos, Descrição)
 3. Clique em "💾 Salvar Desafio"
 
 ### Editar/Deletar Desafios
-1. Na lista de desafios, use os ícones:
-   - **✏️ Editar**: Carrega os dados no formulário
-   - **🗑️ Deletar**: Remove o desafio (com confirmação)
+1. Na lista de desafios, use os ícones ✏️ e 🗑️
 
 ### Visualizar Ranking
-1. Na seção "🏆 Ranking", escolha a ordenação:
-   - **Pontos**: Ordena por pontos totais
-   - **Streak**: Ordena por sequência de dias
-2. Os primeiros colocados recebem medalhas (🥇🥈🥉)
+1. Na seção "🏆 Ranking", escolha a ordenação por Pontos ou Streak
 
 ## 🔧 Personalização
 
 ### Adicionar Novos Badges
-1. Insira no banco de dados (tabela `badges`):
-   ```sql
-   INSERT INTO badges (nome, descricao, icone_url, criterio_tipo, criterio_valor, criterio_extra) 
-   VALUES ('Novo Badge', 'Descrição', 'icons/novo.png', 'pontos', 100, NULL);
-   ```
+Execute no banco (tabela `badges`):
+```sql
+INSERT INTO badges (nome, descricao, icone_url, criterio_tipo, criterio_valor, criterio_extra) 
+VALUES ('Novo Badge', 'Descrição', 'icons/novo.png', 'pontos', 100, NULL);
+```
 
 ### Modificar Critérios de Badges
 - **pontos**: Badge por pontos totais
@@ -129,28 +115,24 @@ Uma aplicação web completa que gamifica o processo de aprendizado através de 
 - **desafios_area**: Badge por desafios em área específica
 
 ### Personalizar Visual
-1. Edite o CSS no arquivo `index.html`
-2. Modifique cores nos gradientes:
-   ```css
-   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-   ```
+- Edite estilos em `css/style.css`
 
 ## 🐛 Solução de Problemas
 
 ### Erro de Conexão com Banco
-- Verifique se MySQL está rodando
-- Confirme as credenciais em `api/config.php`
+- Verifique MySQL ativo
+- Confirme credenciais em `api/config.php`
 - Certifique-se que o banco `gamificado_aprendizado` existe
 
 ### Desafios Não Carregam
-- Verifique se o Apache está rodando
-- Confirme o caminho da API no JavaScript (linha 41 do `index.html`)
+- Verifique Apache ativo
+- Confirme a constante `API_URL` em `js/app.js`
 - Verifique erros no console do navegador (F12)
 
 ### Modal de Feedback Não Aparece
-- Verifique se jQuery está carregando
-- Confirme se não há erros JavaScript no console
-- Teste a API diretamente: `http://localhost/seu-projeto/api/desafios.php`
+- Verifique jQuery carregado
+- Verifique erros no console
+- Teste a API: `http://localhost/gamificado-desafio-aprendizado/api/desafios_simple.php`
 
 ## 📈 Melhorias Futuras
 
@@ -171,24 +153,20 @@ Uma aplicação web completa que gamifica o processo de aprendizado através de 
 ## 🤝 Contribuição
 
 1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
+2. Crie uma branch (`git checkout -b feature/nova-feature`)
+3. Commit (`git commit -am 'feat: nova feature'`)
+4. Push (`git push origin feature/nova-feature`)
 5. Abra um Pull Request
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE`.
 
 ## 👥 Créditos
 
-Desenvolvido pela equipe de especialistas:
-- **Engenheiro de Software**: Arquitetura e backend
-- **Especialista em UX/Gamificação**: Frontend e experiência
-- **Especialista em Inovação**: Conceitos e melhorias
+Desenvolvido pela equipe.
 
 ---
 
-**🎯 Bons estudos e que a gamificação torne seu aprendizado mais divertido!**
+🎯 Bons estudos e que a gamificação torne seu aprendizado mais divertido!
 
->>>>>>> 9e9cdc7 (🎮 Projeto Final CRUD Gamificado - Sistema completo de desafios de aprendizado com gamificação, ranking, badges e interface responsiva)
