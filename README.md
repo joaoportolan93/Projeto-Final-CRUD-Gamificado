@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Projeto-Final-CRUD-Gamificado
-=======
 # 🎯 Desafio de Aprendizado - Sistema CRUD Gamificado
 
 Uma aplicação web completa que gamifica o processo de aprendizado através de desafios, pontos, streaks e badges. Desenvolvida com PHP, MySQL, HTML, CSS e JavaScript.
@@ -179,13 +176,6 @@ Uma aplicação web completa que gamifica o processo de aprendizado através de 
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 👥 Créditos
-
-Desenvolvido pela equipe de especialistas:
-- **Engenheiro de Software**: Arquitetura e backend
-- **Especialista em UX/Gamificação**: Frontend e experiência
-- **Especialista em Inovação**: Conceitos e melhorias
 
 ---
 
